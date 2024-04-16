@@ -27,7 +27,9 @@ jobs:
       with:
         dir_names: true
         files: 'src/**'
+        files_ignore: 'src/pro/**/*.hcl'
         dir_names_max_depth: 4
+        
 
     - name: Show changed files
       run: |
