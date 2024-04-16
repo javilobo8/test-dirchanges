@@ -1,8 +1,9 @@
-name: 'PR'
+name: 'Main'
 
 on:
-  pull_request:
-    types: [opened, edited, reopened, synchronize]
+  push:
+    branches:
+      - main
 
 permissions: write-all
 
