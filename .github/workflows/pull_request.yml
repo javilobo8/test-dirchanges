@@ -43,3 +43,13 @@ jobs:
         echo ${{ steps.changed-files.outputs.all_changed_files }} | tr ' ' '\n'
         echo "Please, make changes in one directory at a time."
         exit 1
+
+    - name: Run step if one directory in src/ has been changed
+      if: ${{ steps.changed-files.outputs.all_changed_files_count == 1 }}
+      run: |
+        echo "Changes detected in ${{ steps.changed-files.outputs.all_changed_files }}"
+    
+    - name: Run step if no file(s) in src/ have been changed
+      if: ${{ steps.changed-files.outputs.all_changed_files_count == 0 }}
+      run: |
+        echo "No files in src/ have been changed."
