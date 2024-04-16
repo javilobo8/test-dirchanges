@@ -30,6 +30,6 @@ jobs:
         dir_names_max_depth: 3
     
     - name: Show changed files
-    - run: |
+      run: |
         echo "steps.changed-files.outputs.all_changed_files: ${{ steps.changed-files.outputs.all_changed_files }}"
         echo "steps.changed-files.outputs.all_changed_files_count: ${{ steps.changed-files.outputs.all_changed_files_count }}"
