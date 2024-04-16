@@ -9,7 +9,7 @@ permissions: write-all
 
 jobs:
   test:
-    name: 'test'
+    name: 'Main'
     runs-on: ubuntu-latest
 
     defaults:
