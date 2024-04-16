@@ -1,0 +1,38 @@
+name: 'PR'
+
+on:
+  push:
+    branches:
+      - main
+
+permissions: write-all
+
+jobs:
+  test:
+    name: 'test'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+    
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v42
+      with:
+        dir_names: true
+        files: 'src/**'
+        files_ignore: 'src/environment1/**/*.hcl'
+        dir_names_max_depth: 4
+
+
+    - name: Show changed files
+      run: |
+        echo "steps.changed-files.outputs.all_changed_files: ${{ steps.changed-files.outputs.all_changed_files }}"
+        echo "steps.changed-files.outputs.all_changed_files_count: ${{ steps.changed-files.outputs.all_changed_files_count }}"
