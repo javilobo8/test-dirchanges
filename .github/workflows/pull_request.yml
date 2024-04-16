@@ -28,7 +28,7 @@ jobs:
         dir_names: true
         files: 'src/**'
         dir_names_max_depth: 3
-    
+
     - name: Show changed files
       run: |
         echo "steps.changed-files.outputs.all_changed_files: ${{ steps.changed-files.outputs.all_changed_files }}"
