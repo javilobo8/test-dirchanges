@@ -27,7 +27,7 @@ jobs:
       with:
         dir_names: true
         files: 'src/**'
-        files_ignore: 'src/environment1/**/*.hcl'
+        files_ignore: 'src/environment1/*/*.hcl'
         dir_names_max_depth: 4
 
 
