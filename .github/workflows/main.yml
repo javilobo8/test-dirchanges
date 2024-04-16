@@ -36,3 +36,11 @@ jobs:
       run: |
         echo "steps.changed-files.outputs.all_changed_files: ${{ steps.changed-files.outputs.all_changed_files }}"
         echo "steps.changed-files.outputs.all_changed_files_count: ${{ steps.changed-files.outputs.all_changed_files_count }}"
+
+    - name: Run step if more than one directory in src/ have been changed
+      if: ${{ steps.changed-files.outputs.all_changed_files_count > 1 }}
+      run: |
+        echo "There are changes in more than one directory in src/ :"
+        echo ${{ steps.changed-files.outputs.all_changed_files }} | tr ' ' '\n'
+        echo "Please, make changes in one directory at a time."
+        exit 1
