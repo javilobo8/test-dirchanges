@@ -49,3 +49,12 @@ jobs:
       if: ${{ steps.changed-files.outputs.all_changed_files_count == 0 }}
       run: |
         echo "No files in src/ have been changed."
+        exit 0
+    
+    - name: Get working directory
+      run: echo "WORKING_DIR=${{ steps.changed-files.outputs.all_changed_files }}" >> $GITHUB_ENV
+
+    - name: Run step
+      if: ${{ env.WORKING_DIR != '' }}
+      run: |
+        echo "this shoudld skip $WORKING_DIR"
